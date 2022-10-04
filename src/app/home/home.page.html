@@ -13,8 +13,53 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+
+
+
+
+
+
+
+  <!--<ion-card *ngFor="let person of people">
+    <ion-card-header>
+      <ion-card-title>{{person.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      
+      <ion-button color="danger" (click)="removePerson(person.id)">Borrar persona</ion-button>
+    </ion-card-content>
+  </ion-card>-->
+  <!--<ng-template ngFor let-i="index" let-c="count" let-person [ngForOf]="people">
+  </ng-template>-->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-sm="9">
+        <!-- Inputs with labels -->
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input (keyup.enter)="addPerson(name)" placeholder="Escribe el nombre" [(ngModel)]="name" required>
+          </ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-sm="2" offset="1">
+        <ion-button (click)="addPerson(name)">Enviar datos</ion-button>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col>
+        <div id="text-container">
+          <ion-text class="empty-list" color="warning" *ngIf="people.length == 0">No existen personas</ion-text>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" size-sm="3" *ngFor="let person of people">
+        <app-person  [data]="person" (onremove)="removePerson($event)"></app-person>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
 </ion-content>
